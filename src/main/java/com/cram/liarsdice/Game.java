@@ -80,6 +80,9 @@ public class Game {
         int n = totalNumberOfDice - diceOnTable.size();
 
         for (int k = numOfDice; k <= n; k++) {
+            // There are other ways of getting a factorial in Java, but the Apache utils still work just fine
+            // I've yet to find any reason why these were actually deprecated. Math is math and has been for thousands
+            // of years!
             probability = probability + ArithmeticUtils.factorial(n) / ArithmeticUtils.factorial(k) * ArithmeticUtils.factorial(n - k)
                     * (Math.pow(1.0 / 6.0, k)) * (Math.pow(5.0 / 6.0, n - k));
         }
@@ -118,6 +121,16 @@ public class Game {
         }
 
         return players.get(player);
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "numberOfPlayers=" + numberOfPlayers +
+                ", totalNumberOfDice=" + totalNumberOfDice +
+                ", players=" + players +
+                ", diceOnTable=" + diceOnTable +
+                '}';
     }
 
     /**

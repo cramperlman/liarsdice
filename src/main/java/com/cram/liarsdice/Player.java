@@ -61,6 +61,13 @@ public class Player {
         return dice;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "dice=" + dice +
+                '}';
+    }
+
     /**
      * For testing purposes only
      *

@@ -33,6 +33,13 @@ public class Dice {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return "Dice{" +
+                "value=" + value +
+                '}';
+    }
+
     /**
      * For testing purposes only
      *
