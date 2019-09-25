@@ -2,6 +2,7 @@ package com.cram.liarsdice;
 
 import org.apache.commons.math3.util.ArithmeticUtils;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +89,18 @@ public class Game {
         }
 
         return probability * 100;
+    }
+
+    /**
+     * If we wanted the percentage returned in a prettier string...
+     *
+     * @param numOfDice
+     * @param value
+     * @return
+     */
+    public String claimFormatted(int numOfDice, int value) {
+        DecimalFormat df = new DecimalFormat("#.###########");
+        return df.format(claim(numOfDice, value));
     }
 
     /**
