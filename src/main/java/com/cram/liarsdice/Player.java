@@ -44,7 +44,8 @@ public class Player {
         }
 
         if (diceToPlay.size() < numDiceToPlay) {
-            // If somehow we didn't have enough dice because the Player made a stupid play...
+            // If somehow we didn't have enough dice to meet the Player's stated intentions,
+            // because the Player made a stupid play...
             throw new IllegalArgumentException("Unable to play " + numDiceToPlay + " with value " + value + ".");
         }
 
