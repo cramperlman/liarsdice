@@ -42,7 +42,6 @@ public class Game {
         totalNumberOfDice = numberOfPlayers * Player.NUMBER_OF_DICE;
     }
 
-
     /**
      * Plays a move for a given player, specifying the number of dice placed on the table with a given value
      *
@@ -110,6 +109,15 @@ public class Game {
         }
 
         return false;
+    }
+
+
+    public Player getPlayer(int player) {
+        if (player > players.size() || player < 0) {
+            throw new IllegalArgumentException("Unable to get player " + player + ". Must be between 0 and " + (numberOfPlayers - 1) + ".");
+        }
+
+        return players.get(player);
     }
 
     /**

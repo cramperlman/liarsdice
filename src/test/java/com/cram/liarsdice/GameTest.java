@@ -61,5 +61,14 @@ public class GameTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Unable to move for player 0. Dice values must be between 1 and 6.", e.getMessage());
         }
+
+        try {
+            game.getPlayer(-2);
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("Unable to get player -2. Must be between 0 and 3.", e.getMessage());
+        }
+
+
     }
 }
