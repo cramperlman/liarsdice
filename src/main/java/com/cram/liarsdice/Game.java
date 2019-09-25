@@ -27,22 +27,6 @@ public class Game {
     private List<Player> players = new ArrayList<Player>();
     private List<Dice> diceOnTable = new ArrayList<Dice>();
 
-    public Game() {
-        numberOfPlayers = 4;
-
-        Player player1 = new Player(new int[]{3, 3, 1, 1, 1});
-        Player player2 = new Player(new int[]{3, 2, 1, 1, 1});
-        Player player3 = new Player(new int[]{1, 1, 1, 1, 1});
-        Player player4 = new Player(new int[]{1, 1, 1, 1, 1});
-
-        players.add(player1);
-        players.add(player2);
-        players.add(player3);
-        players.add(player4);
-
-        totalNumberOfDice = numberOfPlayers * Player.NUMBER_OF_DICE;
-    }
-
     /**
      * Instantiates a game of Liars Dice for the specified number of players
      *
@@ -126,6 +110,25 @@ public class Game {
         }
 
         return false;
+    }
+
+    /**
+     * For testing purposes only
+     */
+    public Game() {
+        numberOfPlayers = 4;
+
+        Player player1 = new Player(new int[]{3, 3, 1, 1, 1});
+        Player player2 = new Player(new int[]{3, 2, 1, 1, 1});
+        Player player3 = new Player(new int[]{1, 1, 1, 1, 1});
+        Player player4 = new Player(new int[]{1, 1, 1, 1, 1});
+
+        players.add(player1);
+        players.add(player2);
+        players.add(player3);
+        players.add(player4);
+
+        totalNumberOfDice = numberOfPlayers * Player.NUMBER_OF_DICE;
     }
 
 }

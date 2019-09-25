@@ -19,15 +19,6 @@ public class Dice {
     }
 
     /**
-     * For testing purposes only
-     *
-     * @param value
-     */
-    public Dice(int value) {
-        this.value = value;
-    }
-
-    /**
      * Roll the dice and set the value from 1-6.
      *
      * @return
@@ -40,5 +31,14 @@ public class Dice {
 
     public int getValue() {
         return value;
+    }
+
+    /**
+     * For testing purposes only
+     *
+     * @param value
+     */
+    public Dice(int value) {
+        this.value = value;
     }
 }

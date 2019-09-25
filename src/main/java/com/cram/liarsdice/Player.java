@@ -22,18 +22,6 @@ public class Player {
     }
 
     /**
-     * For testing purposes only
-     *
-     * @param diceValues
-     */
-    public Player(int[] diceValues) {
-        for (int i = 0; i < diceValues.length; i++) {
-            Dice dice = new Dice(diceValues[i]);
-            this.dice.add(dice);
-        }
-    }
-
-    /**
      * A Player can place numDiceToPlay of value on the table
      *
      * @param numDiceToPlay
@@ -70,5 +58,17 @@ public class Player {
      */
     public List<Dice> getDice() {
         return dice;
+    }
+
+    /**
+     * For testing purposes only
+     *
+     * @param diceValues
+     */
+    public Player(int[] diceValues) {
+        for (int i = 0; i < diceValues.length; i++) {
+            Dice dice = new Dice(diceValues[i]);
+            this.dice.add(dice);
+        }
     }
 }
