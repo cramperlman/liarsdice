@@ -68,7 +68,5 @@ public class GameTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Unable to get player -2. Must be between 0 and 3.", e.getMessage());
         }
-
-
     }
 }
