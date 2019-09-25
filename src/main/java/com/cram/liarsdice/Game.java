@@ -52,7 +52,7 @@ public class Game {
      */
     public void move(int player, int dice, int value) {
         if (player < 0 || player >= numberOfPlayers) {
-            throw new IllegalArgumentException("Unable to move for player " + player + ". Player number must be between 0 and " + numberOfPlayers + ".");
+            throw new IllegalArgumentException("Unable to move for player " + player + ". Player number must be between 0 and " + (numberOfPlayers - 1) + ".");
         }
 
         if (dice < 0 || dice > Player.NUMBER_OF_DICE) {
