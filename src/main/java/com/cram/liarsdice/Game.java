@@ -124,6 +124,16 @@ public class Game {
             }
         }
 
+        for (Dice dice: diceOnTable) {
+            if (dice.getValue() == value) {
+                numDiceWithValue++;
+            }
+
+            if (numDiceWithValue == numberOfDice) {
+                return true;
+            }
+        }
+
         return false;
     }
 
