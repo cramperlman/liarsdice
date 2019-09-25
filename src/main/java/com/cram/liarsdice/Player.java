@@ -49,6 +49,9 @@ public class Player {
             throw new IllegalArgumentException("Unable to play " + numDiceToPlay + " with value " + value + ".");
         }
 
+        // Presumably, we can't replay dice that have already been played
+        dice.removeAll(diceToPlay);
+
         return diceToPlay;
     }
 
