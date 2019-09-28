@@ -25,6 +25,8 @@ public class Game {
 
     private int totalNumberOfDice;
 
+    private int priorClaim = 0;
+
     private List<Player> players = new ArrayList<Player>();
     private List<Dice> diceOnTable = new ArrayList<Dice>();
 
@@ -63,7 +65,7 @@ public class Game {
             throw new IllegalArgumentException("Unable to move for player " + player + ". Dice values must be between 1 and 6.");
         }
 
-        Player currentPlayer = players.get(player);
+        Player currentPlayer = getPlayer(player);
         diceOnTable.addAll(currentPlayer.playDice(dice, value));
     }
 
@@ -76,15 +78,29 @@ public class Game {
      * @return
      */
     public double claim(int numOfDice, int value) {
+
+        if (numOfDice <= priorClaim) {
+            throw new IllegalArgumentException("Unable to make a claim of " + numOfDice + " because prior claim was " + priorClaim);
+        }
+
+        priorClaim = numOfDice;
+
         double probability = 0;
 
         int n = totalNumberOfDice - diceOnTable.size();
 
-        for (int k = numOfDice; k <= n; k++) {
+        int start = numOfDice;
+        for (Dice dice : diceOnTable) {
+            if (dice.getValue() == value) {
+                start--;
+            }
+        }
+
+        for (int k = start; k <= n; k++) {
             // There are other ways of getting a factorial in Java, but the Apache utils still work just fine
             // I've yet to find any reason why these were actually deprecated. Math is math and has been for thousands
             // of years!
-            probability = probability + ArithmeticUtils.factorial(n) / ArithmeticUtils.factorial(k) * ArithmeticUtils.factorial(n - k)
+            probability = probability + ArithmeticUtils.factorial(n) / (ArithmeticUtils.factorial(k) * ArithmeticUtils.factorial(n - k))
                     * (Math.pow(1.0 / 6.0, k)) * (Math.pow(5.0 / 6.0, n - k));
         }
 
@@ -156,16 +172,24 @@ public class Game {
                 '}';
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Dice> getDiceOnTable() {
+        return diceOnTable;
+    }
+
     /**
      * For testing purposes only
      */
     public Game() {
         numberOfPlayers = 4;
 
-        Player player1 = new Player(new int[]{3, 3, 1, 1, 1});
-        Player player2 = new Player(new int[]{3, 2, 1, 1, 1});
-        Player player3 = new Player(new int[]{1, 1, 1, 1, 1});
-        Player player4 = new Player(new int[]{1, 1, 1, 1, 1});
+        Player player1 = new Player(new int[]{2, 2, 4, 5, 6});
+        Player player2 = new Player(new int[]{1, 2, 3, 4, 5});
+        Player player3 = new Player(new int[]{3, 3, 3, 5, 5});
+        Player player4 = new Player(new int[]{1, 3, 4, 6, 6});
 
         players.add(player1);
         players.add(player2);

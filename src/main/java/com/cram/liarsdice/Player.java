@@ -39,7 +39,7 @@ public class Player {
             if (thisDice.getValue() == value && diceToPlay.size() < numDiceToPlay) {
                 diceToPlay.add(thisDice);
             } else {
-                thisDice.roll();
+                // thisDice.roll();
             }
         }
 
@@ -62,6 +62,17 @@ public class Player {
      */
     public List<Dice> getDice() {
         return dice;
+    }
+
+    public int[] getDiceValues() {
+        int[] values = new int[dice.size()];
+        int i = 0;
+        for (Dice dice: dice) {
+            values[i] = dice.getValue();
+            i++;
+        }
+        return values;
+
     }
 
     @Override
